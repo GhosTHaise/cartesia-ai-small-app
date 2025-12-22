@@ -3,10 +3,15 @@ import os
 from dotenv import load_dotenv
 import sounddevice as sd
 import numpy as np
+from langchain_groq import ChatGroq
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnableLambda
+from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 
 client = Cartesia(api_key=os.environ["CARTESIA_API_KEY"])
+llm = ChatGroq(model="llama-3.3-70b-versatile")
 
 def speak_stream(text: str):
     return client.tts.bytes(
@@ -14,7 +19,7 @@ def speak_stream(text: str):
         transcript=text,
         voice={
             "mode": "id",
-            "id": "6ccbfb76-1fc6-48f7-b71d-91ac6298247b",
+    "id": "36532b82-ce6c-43d7-bdf3-2183e414966c"
         },
         output_format={
             "container": "raw",
@@ -46,6 +51,15 @@ def play_stream(chunk_iter):
 
             audio = np.frombuffer(audio_bytes, dtype=np.float32)
             stream.write(audio)
+            
 
-stream = speak_stream("Hello, I am speaking to you in real time. I am so happy!")
-play_stream(stream)
+question = "Comment gagner du temps en étant en vacances ?"
+template = """You are a helpful assistant that answers questions and return only the answer in french.
+
+{question}
+
+"""
+prompt = ChatPromptTemplate.from_template(template)
+chain = prompt | llm | StrOutputParser() | RunnableLambda(speak_stream) | RunnableLambda(play_stream)
+
+result = chain.invoke({"question": question})
