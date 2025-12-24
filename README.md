@@ -1,53 +1,106 @@
-# cartesia-ai-small-app
+# cartesia-ai-small-app 🎙️🤖
 
-## Project Description
-`cartesia-ai-small-app` is a Python-based application that leverages the Cartesia API and LangChain to provide a conversational AI experience. The app includes text-to-speech (TTS) capabilities and audio playback, making it an interactive and engaging tool.
+## Overview
+
+`cartesia-ai-small-app` is a lightweight Python application that demonstrates how to build a **conversational AI with real-time text-to-speech (TTS)** using **Cartesia** and **LangChain**.
+The app generates AI responses and streams them as audio, creating an interactive voice-based experience.
+
+This project is intended as a **small, focused example** rather than a full production system.
+
+---
 
 ## Features
-- **Conversational AI**: Uses LangChain and Cartesia for generating responses.
-- **Text-to-Speech**: Converts text responses into audio using Cartesia's TTS.
-- **Audio Playback**: Streams audio responses in real-time.
+
+* 🧠 **Conversational AI** powered by LangChain
+* 🔊 **Text-to-Speech (TTS)** using the Cartesia API
+* 🎧 **Real-time audio streaming & playback**
+* ⚡ **Fast dependency management with `uv`**
+
+---
+
+## Prerequisites
+
+* Python **3.12+**
+* [`uv`](https://github.com/astral-sh/uv) installed
+* A valid **Cartesia API key**
+
+---
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/GhosTHaise/cartesia-ai-small-app.git
-   cd cartesia-ai-small-app
-   ```
+### 1. Clone the repository
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+git clone https://github.com/GhosTHaise/cartesia-ai-small-app.git
+cd cartesia-ai-small-app
+```
 
-3. Set up environment variables:
-   - Create a `.env` file in the root directory.
-   - Add your Cartesia API key:
-     ```env
-     CARTESIA_API_KEY=your_api_key_here
-     ```
+### 2. Install dependencies with `uv`
+
+This project does **not** use `requirements.txt`.
+Dependencies are managed via `pyproject.toml`.
+
+```bash
+uv sync
+```
+
+---
+
+## Environment Setup
+
+Create a `.env` file at the root of the project:
+
+```env
+CARTESIA_API_KEY=your_api_key_here
+```
+
+---
 
 ## Usage
 
-1. Run the application:
-   ```bash
-   python main.py
-   ```
+Run the application:
 
-2. The app will process a predefined question and play the audio response.
+```bash
+uv run python main.py
+```
 
-## Dependencies
-The project requires the following Python libraries:
-- `cartesia>=2.0.17`
-- `dotenv>=0.9.9`
-- `langchain>=1.2.0`
-- `langchain-core>=1.2.4`
-- `langchain-google-genai>=4.1.2`
-- `langchain-groq>=1.1.1`
-- `numpy>=2.4.0`
-- `pydub>=0.25.1`
-- `sounddevice>=0.5.3`
+The app will:
+
+1. Generate a response from the AI
+2. Convert the response to speech using Cartesia
+3. Stream and play the audio in real time
+
+---
+
+## Tech Stack & Dependencies
+
+Main libraries used:
+
+* `cartesia`
+* `langchain`
+* `langchain-core`
+* `langchain-google-genai`
+* `langchain-groq`
+* `numpy`
+* `pydub`
+* `sounddevice`
+* `python-dotenv`
+
+> Exact versions are defined in `pyproject.toml` and resolved by `uv`.
+
+---
+
+## Project Status
+
+🚧 **Experimental / Demo project**
+This app is designed for learning and experimentation with voice-enabled AI systems.
+
+---
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+
+MIT License
+See the [LICENSE](LICENSE) file for details.
+
+---
+
