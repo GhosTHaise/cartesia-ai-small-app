@@ -2,7 +2,7 @@
 
 ## Overview
 
-`cartesia-ai-small-app` is a lightweight Python application that demonstrates how to build a **conversational AI with real-time text-to-speech (TTS)** using **Cartesia** and **LangChain**.
+`cartesia-ai-small-app` is a lightweight Python application that demonstrates how to build a **conversational AI with real-time text-to-speech (TTS)** using **Cartesia**, **LangChain** and **Groq**.
 The app generates AI responses and streams them as audio, creating an interactive voice-based experience.
 
 This project is intended as a **small, focused example** rather than a full production system.
@@ -51,7 +51,8 @@ uv sync
 Create a `.env` file at the root of the project:
 
 ```env
-CARTESIA_API_KEY=your_api_key_here
+CARTESIA_API_KEY=your_cartesia_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 ```
 
 ---
